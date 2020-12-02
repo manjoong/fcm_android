@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "60210049154",
+    "firebase_url": "https://jeonse-alarm.firebaseio.com",
+    "project_id": "jeonse-alarm",
+    "storage_bucket": "jeonse-alarm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60210049154:android:642b4dc81d536917d0049b",
+        "android_client_info": {
+          "package_name": "com.example.jeonse_alarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60210049154-2nacgln8r8boki0dedai9lq7sluvso1d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jeonse_alarm",
+            "certificate_hash": "ec974fcdbf593d71c2bc83dfa73f826f8d5b2646"
+          }
+        },
+        {
+          "client_id": "60210049154-fr912iiftdnvf49u8pde5es426qso2db.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdBlpMmYxlYIUXUB0AdV4FnShU2rLR0Ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60210049154-fr912iiftdnvf49u8pde5es426qso2db.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
