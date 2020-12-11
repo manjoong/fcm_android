@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Jeonse_alarm" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/colorPrimary</item>
+        <!--        <item name="colorAccent">@color/colorPrimary</item>-->
+        <!--        <item name="color">@color/colorPrimary</item>-->
+        <!--        <item name="colorControlActivated">@color/colorPrimary</item>-->
+        <!--        <item name="colorButtonNormal">@color/colorPrimary</item>-->
+        <!--        <item name="cardBackgroundColor">@color/colorPrimary</item>-->
+        <!--        <item name="colorBackgroundFloating">@color/colorPrimary</item>-->
+        <!--        <item name="colorOnBackground">@color/colorPrimary</item>-->
+        <!--        <item name="android:iconTint">@color/colorPrimary</item>-->
+        <!--        <item name="colorOnPrimarySurface">@color/colorPrimary</item>-->
+        <!--        <item name="actionMenuTextColor">@color/colorPrimary</item>-->
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/colorPrimary</item>
+        <!-- Customize your theme here. -->
+        <!--        <item name="itemTextColor">#FFFFFF</item>-->
+        <!--        <item name="itemIconTint">@color/purple_700</item>-->
+        <!--        <item name="itemIconSize">100sp</item>-->
+        <!--        <item name="iconSize">100sp</item>-->
+        <!--        <item name="chipIconSize">100dp</item>-->
+        <!--        <item name="closeIconSize">100dp</item>-->
+        <!--        <item name="android:actionMenuTextColor">#FFFFFF</item>-->
+
+        <!-- 이거 먹음-->
+<!--        <item name="android:textColor">@color/white</item>-->
+    </style>
+</resources>

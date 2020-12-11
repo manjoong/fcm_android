@@ -1,62 +1,67 @@
 package com.example.jeonse_alarm;
 
-import androidx.annotation.NonNull;
+import android.content.Context;
+import android.os.Bundle;
+
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import android.content.Intent;
-import android.content.Context;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
-import android.view.MenuItem;
-import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
-import com.kakao.util.OptionalBoolean;
 
-
-public class MainActivity extends AppCompatActivity {
-
+public class LoginActivity2 extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Context context = this;
-    String strNickname, strProfile, strEmail, strGender, token;
-
+    String strNickname, strProfile, strEmail, strGender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_page_2);
+        TextView tvNickname = findViewById(R.id.tvNickname);
+        ImageView ivProfile = findViewById(R.id.ivProfile);
+        TextView tvEmail = findViewById(R.id.tvEmail);
+        TextView tvGender = findViewById(R.id.tvGender);
+        Button btnLogout = findViewById(R.id.btnLogout);
         Intent intent = getIntent();
         strNickname = intent.getStringExtra("name");
         strProfile = intent.getStringExtra("profile");
         strEmail = intent.getStringExtra("email");
         strGender = intent.getStringExtra("gender");
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+
+        tvNickname.setText(strNickname);
+        tvEmail.setText(strEmail);
+        tvGender.setText(strGender);
+
+        Glide.with(this).load(strProfile).into(ivProfile); //프로필 사진 url을 사진으로 보여줌
+        btnLogout.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "정상적으로 로그아웃되었습니다.", Toast.LENGTH_SHORT).show();
+
+                UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
                     @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()){
-                            Log.w("FCM Log", "getInstanceId failed", task.getException());
-                            return;
-                        }
-                        token = task.getResult().getToken();
-                        Log.d("FCM LOg", "FCM 토큰 " + token);
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+                    public void onCompleteLogout() {
+                        Intent intent = new Intent(LoginActivity2.this, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     }
                 });
-
-
-
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -117,8 +122,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        Toast.makeText(MainActivity.this, "닉네임: " + strNickname + "이메일: " + strEmail + "fcm토큰: " + token, Toast.LENGTH_SHORT).show();
-
     }
 
 
@@ -132,5 +135,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

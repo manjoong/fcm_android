@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">jeonse_alarm</string>
+    <string name="app_name">전세 알리미</string>
+    <string name="open">open</string>
+    <string name="closed">close</string>
+    <string name="nav_header_subtitle">nv_header_subtitle</string>
+    <string name="nav_header_title">전세 알리미</string>
+    <string name="kakao_app_key">84eb95e7bc3438748f80a422a533dbec</string>
+
 </resources>

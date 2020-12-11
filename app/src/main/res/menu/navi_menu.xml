@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/account"
+            android:icon="@mipmap/train_orange"
+            style="@themes/Theme.Jeonse_alarm"
+            android:title="관심지역 설정"></item>
+
+        <item
+            android:id="@+id/setting"
+            android:icon="@mipmap/share_orange"
+            android:title="공유하기"
+            />
+        <item
+            android:id="@+id/logout"
+            android:icon="@mipmap/gear_orange"
+            android:title="설정"
+            />
+    </group>
+    <group />
+</menu>
