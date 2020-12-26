@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".LoginActivity">
     <LinearLayout
+        android:id="@+id/layout_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -22,6 +23,7 @@
             android:gravity="center"
             android:layout_weight="4">
             <TextView
+                android:fontFamily="@font/bmdohyon"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,6 +32,7 @@
                 android:textSize="30sp">
             </TextView>
             <TextView
+                android:fontFamily="@font/bmdohyon"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,6 +42,7 @@
             </TextView>
 
             <Button
+                android:fontFamily="@font/bmdohyon"
                 android:id="@+id/btn_custom_login"
                 android:layout_width="275dp"
                 android:layout_height="60dp"
@@ -54,11 +58,19 @@
             </com.kakao.usermgmt.LoginButton>
 
             <Button
+                android:id="@+id/btn_custom_google_login"
+                android:fontFamily="@font/bmdohyon"
                 android:layout_width="275dp"
                 android:layout_height="60dp"
                 android:text="구글 계정으로 로그인"
                 android:textColor="@color/white"
                 app:backgroundTint="#DC0909"></Button>
+            <com.google.android.gms.common.SignInButton
+                android:visibility="gone"
+                android:id="@+id/sign_in_button"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 

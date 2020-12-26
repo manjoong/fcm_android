@@ -1,0 +1,29 @@
+{
+  "selected_stations": [
+    {
+      "stn_name": "수원역",
+      "type": "OPST",
+      "stn_line": "2호선"
+    },
+    {
+      "stn_name": "정자역",
+      "type": "OPST",
+      "stn_line": "분당선"
+    },
+    {
+      "stn_name": "정자역",
+      "type": "OR",
+      "stn_line": "2호선"
+    },
+    {
+      "stn_name": "정자역",
+      "type": "APT",
+      "stn_line": "분당선"
+    },
+    {
+      "stn_name": "서울역",
+      "type": "APT",
+      "stn_line": "2호선"
+    }
+  ]
+}

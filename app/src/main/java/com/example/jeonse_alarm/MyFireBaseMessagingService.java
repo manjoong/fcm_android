@@ -23,7 +23,9 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage){
         if (remoteMessage.getNotification() != null){
+//            ((MainActivity) MainActivity.refrash_context).refrashSelectedList();
             Log.d("FCM Log", "알림 메세지: " + remoteMessage.getNotification().getBody());
+            Log.d("FCM Log", "알림 메세지: " + remoteMessage);
             String messageBody = remoteMessage.getNotification().getBody();
             String messageTitle = remoteMessage.getNotification().getTitle();
 //            Intent intent = new Intent(this, MainActivity.class);
@@ -34,7 +36,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
             Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder=
                     new NotificationCompat.Builder(this, channelId)
-                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setSmallIcon(R.mipmap.app_icon_basic)
                             .setContentTitle(messageTitle)
                             .setContentText(messageBody)
                             .setAutoCancel(true)
@@ -44,6 +46,9 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                 String channelName = "Channel Name";
+
+
+
                 NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
                 notificationManager.createNotificationChannel(channel);
             }

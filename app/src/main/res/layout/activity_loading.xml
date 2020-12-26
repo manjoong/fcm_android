@@ -33,6 +33,7 @@
             </androidx.appcompat.widget.AppCompatImageView>
 
             <TextView
+                android:fontFamily="@font/bmdohyon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="전세 알리미"

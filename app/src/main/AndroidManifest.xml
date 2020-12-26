@@ -5,11 +5,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
+        android:usesCleartextTraffic="true"
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/app_icon_basic"
+        android:icon="@mipmap/app_icon_small_real"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/app_icon_basic_round"
+        android:roundIcon="@mipmap/app_icon_small_real_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Jeonse_alarm">
         <service

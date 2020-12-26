@@ -64,12 +64,15 @@
                         android:background="@drawable/text_border">
 
                         <EditText
+                            android:fontFamily="@font/bmdohyon"
                             android:id="@+id/editSearch"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:background="@color/transparent"
                             android:lineSpacingExtra="18sp"
-                            android:textColor="#515151"></EditText>
+                            android:textColor="#515151"
+                            android:textColorHighlight="@color/colorPrimary"
+                            android:textColorLink="@color/colorPrimary"></EditText>
 
                         <ImageButton
                             android:id="@+id/searBtn"
@@ -79,12 +82,49 @@
                             android:layout_gravity="right|center_vertical"
                             android:src="@mipmap/search_glass" />
                     </FrameLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:background="@color/transparent"
-                        android:id="@+id/recylcerview"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:visibility="visible"
+                            android:id="@+id/selected_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+                            <TextView
+                                android:fontFamily="@font/bmdohyon"
+                                android:layout_marginTop="70dp"
+                                android:layout_marginBottom="40dp"
+                                android:textSize="40dp"
+                                android:text="나의 관심 지역 목록"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                            </TextView>
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:background="@color/transparent"
+                                android:id="@+id/recylcerview_selected"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            </androidx.recyclerview.widget.RecyclerView>
+                        </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:visibility="gone"
+                            android:background="@color/transparent"
+                            android:id="@+id/recylcerview_station"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        </androidx.recyclerview.widget.RecyclerView>
+                        <ProgressBar
+                            android:indeterminateTint="@color/colorPrimary"
+                            android:id="@+id/pBar"
+                            style="?android:attr/progressBarStyleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:visibility="gone" />
+                    </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

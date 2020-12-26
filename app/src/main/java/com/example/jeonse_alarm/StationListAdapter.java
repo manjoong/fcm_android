@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.jeonse_alarm.StationListAdapter.MyViewHolder;
+import com.example.jeonse_alarm.StationConstruct;
 
 import java.util.ArrayList;
 /**
@@ -21,14 +24,22 @@ import java.util.ArrayList;
 public class StationListAdapter extends RecyclerView.Adapter<MyViewHolder> implements Filterable {
 
     Context context;
-    ArrayList<String> unFilteredlist;
-    ArrayList<String> filteredList;
+    ArrayList<StationConstruct> unFilteredlist;
+    ArrayList<StationConstruct> filteredList;
 
-    public StationListAdapter(Context context, ArrayList<String> list) {
+
+    public interface OnListItemSelectedInterface {
+        void onItemSelected(View v, int position);
+    }
+    private OnListItemSelectedInterface mListener;
+
+
+    public StationListAdapter(Context context, ArrayList<StationConstruct> list, OnListItemSelectedInterface listener){
         super();
         this.context = context;
         this.unFilteredlist = list;
         this.filteredList = list;
+        this.mListener = listener;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,7 +49,9 @@ public class StationListAdapter extends RecyclerView.Adapter<MyViewHolder> imple
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.textView.setText(filteredList.get(position));
+        holder.textViewName.setText(filteredList.get(position).getName());
+        holder.idTextView.setText(filteredList.get(position).getStnId().toString());
+//        holder.textViewLine.setText(filteredList.get(position).getLine());
     }
 
     @Override
@@ -48,13 +61,30 @@ public class StationListAdapter extends RecyclerView.Adapter<MyViewHolder> imple
 
     public class MyViewHolder extends ViewHolder {
 
-        TextView textView;
+        TextView textViewName;
+        TextView idTextView;
+//        TextView textViewLine;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView)itemView.findViewById(R.id.label);
+            textViewName = (TextView)itemView.findViewById(R.id.label_name);
+            idTextView = (TextView)itemView.findViewById(R.id.id_text);
+//            textViewLine = (TextView)itemView.findViewById(R.id.label_line);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition() ;
+                    if (pos != RecyclerView.NO_POSITION) {
+//                        Toast.makeText(context, "역이름: " + filteredList.get(pos).getName() + " 역 ID: " + filteredList.get(pos).getStnId() + " 호선: " + filteredList.get(pos).getLine(), Toast.LENGTH_SHORT).show();
+                        mListener.onItemSelected(v, getAdapterPosition());
+                    }
+                }
+            });
         }
     }
+
+
 
     @Override
     public Filter getFilter() {
@@ -65,9 +95,9 @@ public class StationListAdapter extends RecyclerView.Adapter<MyViewHolder> imple
                 if(charString.isEmpty()) {
                     filteredList = unFilteredlist;
                 } else {
-                    ArrayList<String> filteringList = new ArrayList<>();
-                    for(String name : unFilteredlist) {
-                        if(name.toLowerCase().contains(charString.toLowerCase())) {
+                    ArrayList<StationConstruct> filteringList = new ArrayList<>();
+                    for(StationConstruct name : unFilteredlist) {
+                        if(name.getName().toLowerCase().contains(charString.toLowerCase())) {
                             filteringList.add(name);
                         }
                     }
@@ -80,7 +110,7 @@ public class StationListAdapter extends RecyclerView.Adapter<MyViewHolder> imple
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                filteredList = (ArrayList<String>)results.values;
+                filteredList = (ArrayList<StationConstruct>)results.values;
                 notifyDataSetChanged();
             }
         };
